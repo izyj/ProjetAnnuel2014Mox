@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import plugins.PluginsLoader;
+
 import fichier.AjoutFichierRepertoire;
 import fichier.AjoutMusique;
 
@@ -35,7 +37,8 @@ public class Menu implements ActionListener {
 	private JMenu ongletFichier = new JMenu("Fichier");
 	private JMenu ongletFonctionnalite = new JMenu("Fonctionnalite");
 	private JMenu ongletParametre = new JMenu("Parametre");
-	//private JMenu ongletInstrument = new JMenu("Instrument");
+	private JMenu ongletPlugin = new JMenu("Jeu");
+	private JMenuItem jouer = new JMenuItem("Jouer au jeu");
 	private JMenuItem aide = new JMenuItem("Aide");
 	private JMenuItem inscription = new JMenuItem("S'inscrire");
 	private JMenuItem creationPlaylist = new JMenuItem("Crée une playlist");
@@ -67,6 +70,10 @@ public class Menu implements ActionListener {
     visuPlaylist.addActionListener(this);
     visuPlaylist.setToolTipText("visualiser playlist");
     
+    this.ongletPlugin.add(jouer);
+    jouer.addActionListener(this);
+   
+    this.menu.add(ongletPlugin);
     this.menu.add(ongletFichier);
     this.menu.add(ongletFonctionnalite);
     this.menu.add(ongletParametre);
@@ -204,6 +211,12 @@ public class Menu implements ActionListener {
     		
     		
     		ConsultPlaylist ajout =new ConsultPlaylist();	
+    	}
+    	if(e.getSource() == jouer){
+    		
+    		PluginsLoader pl = new PluginsLoader(new String[]{"src\\test.jar"});
+    		
+
     	}
                 
 
