@@ -1,6 +1,8 @@
 package plugins;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -18,7 +20,6 @@ import java.util.jar.JarFile;
 public class PluginsLoader {
 
 	private String[] files;
-	
 	private ArrayList classStringPlugins;
 	
 	
@@ -57,11 +58,11 @@ public class PluginsLoader {
 	
 
 	
-	private void initializeLoader() throws Exception{
+	private void initializeLoader() {
 		//On v�rifie que la liste des plugins � charger � �t� initialis�
-		if(this.files == null || this.files.length == 0 ){
-			throw new Exception("Pas de fichier sp�cifi�");
-		}
+//		if(this.files == null || this.files.length == 0 ){
+//			throw new Exception("Pas de fichier sp�cifi�");
+//		}
 
 		//Pour eviter le double chargement des plugins
 		if(this.classStringPlugins.size() != 0 ){
@@ -74,7 +75,7 @@ public class PluginsLoader {
 		//Pour la comparaison de chaines
 		String tmp = "";
 		//Pour le contenu de l'archive jar
-		Enumeration enumeration;
+		Enumeration enumeration = null;
 		//Pour d�termin� quels sont les interfaces impl�ment�es
 		Class tmpClass = null;
 		
@@ -83,19 +84,35 @@ public class PluginsLoader {
 			f[index] = new File(this.files[index]);
 			
 			if( !f[index].exists() ) {
+				
+				System.out.println("pas de fichier"+f[index].exists());
 				break;
 			}
 			
 			URI u1 =  f[index].toURI();
-			URL u = u1.toURL();
+			URL u = null;
+			try {
+				u = u1.toURL();
+			} catch (MalformedURLException e) {
+				System.out.println("causeURI :  "+ e.getMessage());
+				e.printStackTrace();
+			
+			}
 			//On cr�er un nouveau URLClassLoader pour charger le jar qui se trouve ne dehors du CLASSPATH
 			loader = new URLClassLoader(new URL[] {u}); 
 			
 			//On charge le jar en m�moire
-			JarFile jar = new JarFile(f[index].getAbsolutePath());
+			JarFile jar;
+			try {
+				jar = new JarFile(f[index].getAbsolutePath());
+				//On r�cup�re le contenu du jar
+				enumeration = jar.entries();
+			} catch (IOException e) {
+				System.out.println("causejar");
+				e.printStackTrace();
+			}
 			
-			//On r�cup�re le contenu du jar
-			enumeration = jar.entries();
+			
 			
 			while(enumeration.hasMoreElements()){
 				
@@ -107,7 +124,12 @@ public class PluginsLoader {
 					tmp = tmp.substring(0,tmp.length()-6);
 					tmp = tmp.replaceAll("/",".");
 					
-					tmpClass = Class.forName(tmp ,true,loader);
+					try {
+						tmpClass = Class.forName(tmp ,true,loader);
+					} catch (ClassNotFoundException e) {
+						System.out.println("causetmpClass");
+						e.printStackTrace();
+					}
 					
 					for(int i = 0 ; i < tmpClass.getInterfaces().length; i ++ ){
 						
@@ -125,8 +147,14 @@ public class PluginsLoader {
 				
 				//On cr�er une nouvelle instance de l'objet contenu dans la liste gr�ce � newInstance() 
 				//et on le cast en StringPlugins. Vu que la classe impl�mente StringPlugins, le cast est toujours correct
-				tmpPlugins[i] = (PluginsBase)((Class)this.classStringPlugins.get(i)).newInstance() ;
-				tmpPlugins[i].launch();
+				try {
+					tmpPlugins[i] = (PluginsBase)((Class)this.classStringPlugins.get(i)).newInstance() ;
+				} catch (InstantiationException | IllegalAccessException e) {
+					System.out.println("cause tmpplug : "+e.getMessage());
+					e.printStackTrace();
+				}
+				System.out.println("passer");
+				//tmpPlugins[i].launch();
 				
 			}
 		
