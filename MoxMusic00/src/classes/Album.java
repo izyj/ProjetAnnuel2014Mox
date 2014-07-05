@@ -3,7 +3,7 @@ package classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import module.IModule;
+
 
 
 public class Album implements Serializable  {
