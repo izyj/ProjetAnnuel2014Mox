@@ -166,6 +166,7 @@ import classes.Playlist;
 	                
 	          } catch (IOException e) {
 	                 e.printStackTrace();
+	                 return colChanson;
 	          }
 	            catch(ClassNotFoundException e){
 	                 e.printStackTrace();
