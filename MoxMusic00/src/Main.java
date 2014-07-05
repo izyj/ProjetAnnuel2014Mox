@@ -6,6 +6,10 @@ import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import plugins.PluginsLoader;
+
+
+
 
 
 
@@ -37,6 +41,7 @@ public class Main {
 					} catch (Exception e) {
 					    // If Nimbus is not available, you can set the GUI to another look and feel.
 					}
+					
 					new Acceuil();
 					ToolTipManager.sharedInstance().setInitialDelay(0);
 					
