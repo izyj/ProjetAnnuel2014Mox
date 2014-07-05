@@ -57,61 +57,31 @@ public class Acceuil extends Page implements ActionListener, MouseListener {
         //--------------------------------------------------
 
         
-
+        AjoutMusique  cPath = new AjoutMusique();
+        cPath.creationChemin(nomFichierChanson);
+        cPath.creationChemin(nomFichierPlaylist);
         tablo=new DataFileTable(nomFichierChanson, false);
+        tablo.getTable().addMouseListener(this);
         //configuration de la fenêtre
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setForeground(Color.black);
         this.setBackground(Color.lightGray);
-       // this.getContentPane().add(tablo,"Center");
         this.setSize(tablo.getPreferredSize());
-        //affichage
-        //Phaut.add(tablo);
         if (super.menu.getRefresh() == 1){
         	
         	tablo.repaint();
         	super.menu.setRefresh(0);
-        }
-        //écouteur pour fermeture
-      //  fen.addWindowListener(new WindowCloser());
-        
-        
-        //-----------------------------------------------
-        
-//        BoutonPause = new JButton(new ImageIcon("D:\\ESGI\\projets\\projet annuel\\2013-2014\\Java\\images\\boutonPause.png"));
-//        BoutonPause.setPressedIcon(new ImageIcon("D:\\ESGI\\projets\\projet annuel\\2013-2014\\Java\\images\\boutonPause.png"));
-//        BoutonPause.addActionListener(this);
-//        BoutonPause.setOpaque(false);
-//        BoutonPause.setContentAreaFilled(false);
-//        BoutonPause.setBorderPainted(false);
-//        BoutonPause.setPreferredSize(new Dimension(200,100));
-//        contener4.add(BoutonPause);
-// 
-//        
-//        
-//        boutonLecture = new JButton(new ImageIcon("D:\\ESGI\\projets\\projet annuel\\2013-2014\\Java\\images\\boutonLecture.png"));
-//        boutonLecture.setPressedIcon(new ImageIcon("D:\\ESGI\\projets\\projet annuel\\2013-2014\\Java\\images\\boutonLecture.png"));
-//        boutonLecture.addActionListener(this);
-//        boutonLecture.setOpaque(false);
-//        boutonLecture.setContentAreaFilled(false);
-//        boutonLecture.setBorderPainted(false);
-//        boutonLecture.setPreferredSize(new Dimension(100,100));
-        
-        
+        }      
         
         contener4.add(audio);
         contener.add(contener4);
-        AjoutMusique  cPath = new AjoutMusique();
-        tablo.getTable().addMouseListener(this);
-        cPath.creationChemin(nomFichierChanson);
-        cPath.creationChemin(nomFichierPlaylist);
+        
         addMouseListener(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// fermer grace a la croix
         this.getContentPane().add(tablo,BorderLayout.CENTER);
         this.getContentPane().add(contener,BorderLayout.SOUTH);
         
         PBas.setLayout(new BorderLayout());
-        //this.getContentPane().add(PBas,BorderLayout.SOUTH);
         this.setVisible(true);
     }
 public void actionPerformed(ActionEvent e) {
