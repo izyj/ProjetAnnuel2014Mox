@@ -33,25 +33,9 @@ public class Page extends JFrame {
     protected Toolkit tk = Toolkit.getDefaultToolkit();
     protected Dimension d = tk.getScreenSize(); // dimension de l'ecran
     protected Menu menu = new Menu(this);
-    
+    protected AfficheImage image ;
     
     public Page() {
-//    	this.setDefaultLookAndFeelDecorated(true);
-//    	try {
-//			UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (InstantiationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IllegalAccessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (UnsupportedLookAndFeelException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 
 try {
     for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -61,9 +45,13 @@ try {
         }
     }
 } catch (Exception e) {
-    // If Nimbus is not available, you can set the GUI to another look and feel.
+   System.out.println(e.getMessage());
+   
 }
-
+		//Definition du fond d'ecran
+//		image =new AfficheImage("lib\\images\\logo-cv-filter.png");
+//		image.setOpaque(false);
+//		this.setContentPane(image);
     	this.setJMenuBar(menu.getMenu());
         this.setResizable(false);
         this.setLocationRelativeTo(null);//centre la fenetre a l'ouverture
@@ -90,6 +78,54 @@ class AfficheImage extends JPanel {
         g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
     }
 
+}
+
+
+
+public ImageIcon getHh() {
+	return hh;
+}
+
+
+
+public void setHh(ImageIcon hh) {
+	this.hh = hh;
+}
+
+
+
+public Toolkit getTk() {
+	return tk;
+}
+
+
+
+public void setTk(Toolkit tk) {
+	this.tk = tk;
+}
+
+
+
+public Dimension getD() {
+	return d;
+}
+
+
+
+public void setD(Dimension d) {
+	this.d = d;
+}
+
+
+
+public Menu getMenu() {
+	return menu;
+}
+
+
+
+public void setMenu(Menu menu) {
+	this.menu = menu;
 }
 
 
