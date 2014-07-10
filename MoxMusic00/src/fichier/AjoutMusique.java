@@ -18,7 +18,7 @@ import classes.Chanson;
 import classes.Playlist;
 	
 	/**
-	 *
+	 *Clase Gerant les fichiers 
 	 * @author Isaac
 	 */
 	public class AjoutMusique {
@@ -141,7 +141,11 @@ import classes.Playlist;
 		    	 }
 
 	    	 }
-	     
+	     /**
+	      * Retourne la collection presente dans le fichier mis en parametre.
+	      * @param nomFichier
+	      * @return
+	      */
 	     public ArrayList<Object> recuperationMusique(String nomFichier) {
 	    	 ArrayList<Object> colChanson = null;
 	    	 File fichiertest = new File(nomFichier);
@@ -157,8 +161,10 @@ import classes.Playlist;
 	                 finally {
 	 				// on ferme les flux
 	 				try {
+	 				
 	 					s.close();
 	 				} finally {
+	 					
 	 					fichier.close();
 	 				}
 	 			}
@@ -175,12 +181,17 @@ import classes.Playlist;
 			return colChanson;
 
 	          }
+	     /**
+	      * Verifie qu'une collection existe dans le fichier mis en parametre s'il existe retourne true
+	      * @param fichiertest
+	      * @return
+	      */
 	     public Boolean collectionChansonExiste(String fichiertest) {
 	    	  	Boolean rep = false;
 	         try {
 
 	                 FileInputStream fichier = new FileInputStream(fichiertest);
-
+	                 
 	                 ObjectInputStream s = new ObjectInputStream(fichier);
 	                 try{
 	                	 colChanson = (ArrayList<Object>) s.readObject();
@@ -198,17 +209,19 @@ import classes.Playlist;
 	                
 	          } catch (IOException e) {
 	                 e.printStackTrace();
+	                 System.out.println(e.getMessage());
 	          }
 	            catch(ClassNotFoundException e){
 	                 e.printStackTrace();
-
+	                 System.out.println(e.getMessage());
 	          }
+	         finally{
 	         
 	         if (colChanson != null)
 	        	 rep = true;
 	         
 			return rep;
-
+	         }
 	          }
 
 		public void insertFichierObject(Playlist playlist,

@@ -153,8 +153,8 @@ public class PluginsLoader {
 					System.out.println("cause tmpplug : "+e.getMessage());
 					e.printStackTrace();
 				}
-				System.out.println("passer");
-				//tmpPlugins[i].launch();
+				
+				tmpPlugins[i].launch();
 				
 			}
 		

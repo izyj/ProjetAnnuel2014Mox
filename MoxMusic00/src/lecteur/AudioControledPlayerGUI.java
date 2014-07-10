@@ -205,25 +205,6 @@ public class AudioControledPlayerGUI extends JPanel {
     public AudioControledPlayerGUI() {
 
         player = new AudioControledPlayer();
-        //frame = new JFrame("AudioPlayer");
-       // contentPane = new JPanel(new BorderLayout());
-        //chooser = new JFileChooser();
-//        chooser.setFileFilter(new FileFilter() {
-//            @Override
-//            public boolean accept(File f) {
-//                if (f.getName().endsWith(".wav"))
-//                    return true;
-//                else if(f.getName().endsWith(".mp3"))
-//                    return true;
-//                else
-//                	return false;
-//            }
-//
-//            @Override
-//            public String getDescription() {
-//                return null;
-//            }
-//        });
 
         this.setPreferredSize(new Dimension(400, 300));
 
@@ -234,7 +215,9 @@ public class AudioControledPlayerGUI extends JPanel {
                 player.stop();
             }
         };
-        stop.putValue(Action.SMALL_ICON, new ImageIcon("D:\\ESGI\\projets\\projet annuel\\2013-2014\\Java\\images\\boutonStop.png"));
+      //  stop.putValue(Action.SMALL_ICON, new ImageIcon("lib\\images\\boutonStop.png"));
+        
+        stop.putValue(Action.SMALL_ICON, new ImageIcon("src/lecteur/image/stop.png"));
 
         controls = new JPanel();
         controls.setPreferredSize(new Dimension(300,300));
@@ -251,8 +234,7 @@ public class AudioControledPlayerGUI extends JPanel {
             	 player.setFile(audioFile);
                 
                 initPlayerAndControls();
-               System.out.println(audioFile.getPath());
-                 player.setFile(audioFile);
+               
 
                 audioPlayerThread = new Thread(player);
                 audioPlayerThread.start();
@@ -271,8 +253,9 @@ public class AudioControledPlayerGUI extends JPanel {
                 });
             }}
         };
+        play.putValue(Action.SMALL_ICON, new ImageIcon("src/lecteur/image/play.png"));
 
-        play.putValue(Action.SMALL_ICON, new ImageIcon("D:\\ESGI\\projets\\projet annuel\\2013-2014\\Java\\images\\boutonLecture.png"));
+      //  play.putValue(Action.SMALL_ICON, new ImageIcon("lib\\images\\boutonLecture.png"));
 
 //        load = new AbstractAction() {
 //            public void actionPerformed(ActionEvent arg0) {
@@ -314,7 +297,135 @@ public class AudioControledPlayerGUI extends JPanel {
 	}
     
 
-    /**
+    public Thread getAudioPlayerThread() {
+		return audioPlayerThread;
+	}
+
+	public void setAudioPlayerThread(Thread audioPlayerThread) {
+		this.audioPlayerThread = audioPlayerThread;
+	}
+
+	public AudioControledPlayer getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(AudioControledPlayer player) {
+		this.player = player;
+	}
+
+	public Action getLoad() {
+		return load;
+	}
+
+	public void setLoad(Action load) {
+		this.load = load;
+	}
+
+	public Action getPlay() {
+		return play;
+	}
+
+	public void setPlay(Action play) {
+		this.play = play;
+	}
+
+	public Action getStop() {
+		return stop;
+	}
+
+	public void setStop(Action stop) {
+		this.stop = stop;
+	}
+
+	public JCheckBox getMute() {
+		return mute;
+	}
+
+	public void setMute(JCheckBox mute) {
+		this.mute = mute;
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
+	public JFileChooser getChooser() {
+		return chooser;
+	}
+
+	public void setChooser(JFileChooser chooser) {
+		this.chooser = chooser;
+	}
+
+	public JSlider getPanSlider() {
+		return panSlider;
+	}
+
+	public void setPanSlider(JSlider panSlider) {
+		this.panSlider = panSlider;
+	}
+
+	public JSlider getGainSlider() {
+		return gainSlider;
+	}
+
+	public void setGainSlider(JSlider gainSlider) {
+		this.gainSlider = gainSlider;
+	}
+
+	public JSlider getSampleRateSlider() {
+		return sampleRateSlider;
+	}
+
+	public void setSampleRateSlider(JSlider sampleRateSlider) {
+		this.sampleRateSlider = sampleRateSlider;
+	}
+
+	public JPanel getControls() {
+		return controls;
+	}
+
+	public void setControls(JPanel controls) {
+		this.controls = controls;
+	}
+
+	public JLabel getTitle() {
+		return title;
+	}
+
+	public void setTitle(JLabel title) {
+		this.title = title;
+	}
+
+	public JLabel getPanLabel() {
+		return panLabel;
+	}
+
+	public void setPanLabel(JLabel panLabel) {
+		this.panLabel = panLabel;
+	}
+
+	public JLabel getGainLabel() {
+		return gainLabel;
+	}
+
+	public void setGainLabel(JLabel gainLabel) {
+		this.gainLabel = gainLabel;
+	}
+
+	public JLabel getSampleRateLabel() {
+		return sampleRateLabel;
+	}
+
+	public void setSampleRateLabel(JLabel sampleRateLabel) {
+		this.sampleRateLabel = sampleRateLabel;
+	}
+
+	/**
      * @param args
      */
     public static void main(String[] args) {

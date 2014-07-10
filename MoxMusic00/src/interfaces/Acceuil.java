@@ -96,25 +96,9 @@ public void actionPerformed(ActionEvent e) {
         	contener.add(audio);
         	contener.repaint();
         	System.out.println("ll");
-        	//Chanson cellule = tablo.getTable().getValueAt(ligne,colonne);
         	
         }
-	//        if(e.getSource()==supprimerMot){
-        	//            SupprimerMot test = new SupprimerMot();       
 
-	//        }
-	//      if(e.getSource()==nouvellePartie){
-        	//       Partie start = new Partie();
-
-	//      }
-        
-	//      if(e.getSource()==score){
-	//      VoirScore sc = new VoirScore();
-
-	//     }
-        
-	//     if(e.getSource()==quitter){
-	//         System.exit(0);
 
         }
 @Override

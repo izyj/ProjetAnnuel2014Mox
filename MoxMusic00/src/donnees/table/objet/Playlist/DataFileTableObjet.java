@@ -6,6 +6,11 @@ import java.awt.*;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Cree un panel avec le tabeau
+ * @author Isaac2
+ *
+ */
 public class DataFileTableObjet extends JPanel {
 	
 	// le tableau
@@ -13,7 +18,7 @@ public class DataFileTableObjet extends JPanel {
     // le modèle
     private DataTableFileModelPlaylistObjet modelP;
     
-    public DataFileTableObjet(String nomFichier, boolean Playlist) {
+    public DataFileTableObjet() {
     
     //font
     Font f=new Font("SanSerif",Font.PLAIN,24);
@@ -25,7 +30,7 @@ public class DataFileTableObjet extends JPanel {
     //construction du modèle de remplissage à partir du fichier en fonction du model voulue
     // si ce n'est pas une playlist on prend un certain modele de tableau
  
-    	modelP = new DataTableFileModelPlaylistObjet(nomFichier);
+    	modelP = new DataTableFileModelPlaylistObjet();
     	table.setModel(modelP);
     
     //création du tableau

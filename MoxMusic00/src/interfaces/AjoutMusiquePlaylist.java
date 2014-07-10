@@ -78,7 +78,7 @@ public class AjoutMusiquePlaylist extends Page implements MouseListener, ActionL
 			
 			playlist.setLesChansons(colChanson);
 			ajout.insertFichierObject(playlist, nomFichierPlaylist);
-			
+			this.dispose();
 			
 		}
 		
