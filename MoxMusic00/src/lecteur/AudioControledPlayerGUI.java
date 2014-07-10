@@ -28,7 +28,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
 
-import interfaces.Acceuil;
+import interfaces.Accueil;
 
 
 
@@ -217,7 +217,7 @@ public class AudioControledPlayerGUI extends JPanel {
         };
       //  stop.putValue(Action.SMALL_ICON, new ImageIcon("lib\\images\\boutonStop.png"));
         
-        stop.putValue(Action.SMALL_ICON, new ImageIcon("src/lecteur/image/stop.png"));
+        stop.putValue(Action.SMALL_ICON, new ImageIcon("lib\\images\\stop.png"));
 
         controls = new JPanel();
         controls.setPreferredSize(new Dimension(300,300));
@@ -253,7 +253,7 @@ public class AudioControledPlayerGUI extends JPanel {
                 });
             }}
         };
-        play.putValue(Action.SMALL_ICON, new ImageIcon("src/lecteur/image/play.png"));
+        play.putValue(Action.SMALL_ICON, new ImageIcon("lib\\images\\play.png"));
 
       //  play.putValue(Action.SMALL_ICON, new ImageIcon("lib\\images\\boutonLecture.png"));
 

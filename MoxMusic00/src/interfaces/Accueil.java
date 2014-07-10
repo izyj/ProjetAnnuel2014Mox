@@ -32,7 +32,7 @@ import fichier.AjoutMusique;
  *
  * @author iisiramen
  */
-public class Acceuil extends Page implements ActionListener, MouseListener {
+public class Accueil extends Page implements ActionListener, MouseListener {
 	
 	
 	private String nomFichierChanson = "C:" + File.separator + "MoxMusic" +File.separator+ "Content" + File.separator + "chanson.txt";
@@ -48,7 +48,7 @@ public class Acceuil extends Page implements ActionListener, MouseListener {
     protected JPanel contener = new JPanel();
     private DataFileTable tablo;
     private AudioControledPlayerGUI audio = new AudioControledPlayerGUI();
-    public Acceuil() {
+    public Accueil() {
 
         
         contener4= new JPanel();

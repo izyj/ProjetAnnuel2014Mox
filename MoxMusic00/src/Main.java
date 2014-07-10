@@ -1,4 +1,4 @@
-import interfaces.Acceuil;
+import interfaces.Accueil;
 
 
 import javax.swing.SwingUtilities;
@@ -42,7 +42,7 @@ public class Main {
 					    // If Nimbus is not available, you can set the GUI to another look and feel.
 					}
 					
-					new Acceuil();
+					new Accueil();
 					ToolTipManager.sharedInstance().setInitialDelay(0);
 					
 				}

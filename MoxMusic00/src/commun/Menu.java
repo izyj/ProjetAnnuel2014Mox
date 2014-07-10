@@ -1,5 +1,6 @@
 package commun;
 
+import interfaces.Accueil;
 import interfaces.AjoutMusiquePlaylist;
 import interfaces.ConsultPlaylist;
 
@@ -57,11 +58,13 @@ public class Menu implements ActionListener {
 	private JMenuItem visuPlaylist = new JMenuItem("Voir playlists");
 	private JMenuItem ajouterFichier = new JMenuItem("Ajouter un Fichier");
 	private JMenuItem ajoutDossier = new JMenuItem("Ajouter un dossier");
+	private JFrame frame;
 
 	private int refresh = 0;
 
 	public Menu(JFrame Fenetre) {
 
+		frame = Fenetre;
 		// JFrame.setDefaultLookAndFeelDecorated(true);
 		this.ongletParametre.add(inscription);
 
@@ -187,6 +190,8 @@ public class Menu implements ActionListener {
 				ajout.insertFichier(
 						chooser.getSelectedFile().getAbsolutePath(), nomFichier);
 				refresh += 1;
+				frame.dispose();
+				new Accueil();
 			}
 		}
 
@@ -231,13 +236,13 @@ public class Menu implements ActionListener {
 			JLabel mailLbl = new JLabel("E-mail :");
 			JLabel passwordLbl = new JLabel("Mot de passe:");
 			JLabel nomLbl = new JLabel("Nom :");
-			JLabel prenomLbl = new JLabel("Prénom :");
+			JLabel prenomLbl = new JLabel("Prï¿½nom :");
 
 			JTextField mailFld = new JTextField();
 			JPasswordField passwordFld = new JPasswordField();
 			JTextField nomFld = new JTextField();
 			
-			//numéro interdits
+			//numï¿½ro interdits
 			nomFld.addKeyListener(new KeyAdapter() {
 	            public void keyTyped(KeyEvent e) {
 	                char caracter = e.getKeyChar();
@@ -281,7 +286,7 @@ public class Menu implements ActionListener {
 				{
 					input = 2;
 				}
-				//Si accepté :
+				//Si acceptï¿½ :
 				if(input == 0)
 				{
 					char[] password = passwordFld.getPassword();
@@ -300,12 +305,12 @@ public class Menu implements ActionListener {
 					mail = mailFld.getText();
 					
 					if(pwd == "" || nom == "" || prenom == "" || mail == "")
-						JOptionPane.showMessageDialog(null, "Un des champs n'a pas été renseigné.");
+						JOptionPane.showMessageDialog(null, "Un des champs n'a pas ï¿½tï¿½ renseignï¿½.");
 					else{
 						Database db = new Database();
 						if(db.inscription(pwd, nom, prenom, mail) == 1)
 						{
-							JOptionPane.showMessageDialog(null, "Inscription réussite");
+							JOptionPane.showMessageDialog(null, "Inscription rï¿½ussite");
 						}
 						else{
 							JOptionPane.showMessageDialog(null, "Une erreur est survenue lors de l'inscription.", "Erreur", JOptionPane.ERROR_MESSAGE);
